@@ -4,7 +4,7 @@ import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 
 const Burger = (props) => {
   //creates an array of keys and then we're mapping it out
-  const transformedIngredients = Object.keys(props.ingredients).map(
+  let transformedIngredients = Object.keys(props.ingredients).map(
     ingredientKey => {
       //first return will bring us an array of arrays with elements number equal to ingredients number
       return [...Array(props.ingredients[ingredientKey])].map((_, i) => {
@@ -13,11 +13,13 @@ const Burger = (props) => {
         );
       });
     }
-  );
-  console.log((transformedIngredients).map(
-    ingredientKey => {
-      //first return will bring us an array of elements equal to 
-      return [...Array(props.ingredients[ingredientKey])]}));
+  ).reduce((accumulator,currentValue)=>{
+    return accumulator.concat(currentValue)
+  }, []);
+  if(transformedIngredients.length === 0) {
+    transformedIngredients = <p>Please start adding ingredients!</p>
+  }
+  console.log(transformedIngredients);
   return (
     <div className={classes.Burger}>
       <BurgerIngredient type="bread-top" />
