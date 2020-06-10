@@ -5,8 +5,10 @@ import classes from './NavigationItems.module.css'
 
 const NavigationItems = props => (
 <ul className={classes.NavigationItems}>
-    <NavigationItem link='/' active>Burger Builder</NavigationItem>
-    <NavigationItem link='/' >Checkout</NavigationItem>
+    <NavigationItem link='/' exact
+    // active don't need this class because of NavLink
+    >Burger Builder</NavigationItem>
+    <NavigationItem link='/orders' >Orders</NavigationItem>
 </ul>
 )
 
