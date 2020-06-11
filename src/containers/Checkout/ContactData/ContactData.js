@@ -7,11 +7,57 @@ import Input from "../../../components/UI/Input/Input";
 
 class ContactData extends Component {
   state = {
-    name: "",
-    email: "",
-    address: {
-      street: "",
-      postalCode: "",
+    orderForm: {
+      name: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Your name",
+        },
+        value: "Anton",
+      },
+      street: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Your street",
+        },
+        value: "Street",
+      },
+      zipCode: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Your ZIP CODE",
+        },
+        value: "Zip code",
+      },
+      country: {
+        elementType: "input",
+        elementConfig: {
+          type: "text",
+          placeholder: "Your Country",
+        },
+        value: "Country",
+      },
+      email: {
+        elementType: "input",
+        elementConfig: {
+          type: "email",
+          placeholder: "Your email",
+        },
+        value: "Email",
+      },
+      deliveryMethod: {
+        elementType: "select",
+        elementConfig: {
+          options: [
+            { value: "fastest", displayValue: "Fastest" },
+            { value: "cheapest", displayValue: "Cheapest" },
+          ],
+        },
+        value: "",
+      },
     },
     loading: false,
   };
@@ -22,16 +68,6 @@ class ContactData extends Component {
     const order = {
       ingredients: this.props.ingredients,
       price: this.props.price,
-      customer: {
-        name: "Anton Smirnov",
-        address: {
-          street: "My street",
-          zipCode: "My zip code",
-          country: "Canada",
-        },
-        email: "email@email.com",
-      },
-      deliveryMethod: "pickup",
     };
     axios
       .post("/orders.json", order)
@@ -48,10 +84,33 @@ class ContactData extends Component {
   render() {
     let form = (
       <form>
-        <Input inputtype='input' type="text" name="name" placeholder="Your name" />
-        <Input inputtype='input' type="email" name="email" placeholder="Your email" />
-        <Input inputtype='input' type="text" name="street" placeholder="Stret" />
-        <Input inputtype='input' type="text" name="postal" placeholder="Postal Code" />
+        <Input
+          inputtype="input"
+          elementType='...'
+          elementConfig='...'
+          value='...'
+          type="text"
+          name="name"
+          placeholder="Your name"
+        />
+        <Input
+          inputtype="input"
+          type="email"
+          name="email"
+          placeholder="Your email"
+        />
+        <Input
+          inputtype="input"
+          type="text"
+          name="street"
+          placeholder="Stret"
+        />
+        <Input
+          inputtype="input"
+          type="text"
+          name="postal"
+          placeholder="Postal Code"
+        />
       </form>
     );
     if (this.state.loading) {
