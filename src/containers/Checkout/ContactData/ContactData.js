@@ -14,7 +14,7 @@ class ContactData extends Component {
           type: "text",
           placeholder: "Your name",
         },
-        value: "Anton",
+        value: "",
       },
       street: {
         elementType: "input",
@@ -22,15 +22,15 @@ class ContactData extends Component {
           type: "text",
           placeholder: "Your street",
         },
-        value: "Street",
+        value: "",
       },
       zipCode: {
         elementType: "input",
         elementConfig: {
           type: "text",
-          placeholder: "Your ZIP CODE",
+          placeholder: "Zip Code",
         },
-        value: "Zip code",
+        value: "",
       },
       country: {
         elementType: "input",
@@ -38,7 +38,7 @@ class ContactData extends Component {
           type: "text",
           placeholder: "Your Country",
         },
-        value: "Country",
+        value: "",
       },
       email: {
         elementType: "input",
@@ -46,7 +46,7 @@ class ContactData extends Component {
           type: "email",
           placeholder: "Your email",
         },
-        value: "Email",
+        value: "",
       },
       deliveryMethod: {
         elementType: "select",
@@ -78,9 +78,15 @@ class ContactData extends Component {
       .catch((error) => {
         this.setState({ loading: false });
       });
-    console.log(this.props.ingredients);
   };
 
+  inputChangedHadler = (e, inputIdentifier) => {
+    const updatedOrderForm = {...this.state.orderForm}
+    const updatedFormElement = {...updatedOrderForm[inputIdentifier]}
+    updatedFormElement.value = e.target.value
+    updatedOrderForm[inputIdentifier] = updatedFormElement
+    this.setState({orderForm: updatedOrderForm})
+  }
   render() {
     const formElementsArray = [];
     for (let key in this.state.orderForm) {
@@ -98,6 +104,7 @@ class ContactData extends Component {
           elementType={formElement.config.elementType} 
           elementConfig={formElement.config.elementConfig}
           value={formElement.config.value}
+          changed={(event)=>this.inputChangedHadler(event, formElement.id)}
           />
         ))}
         <Button btnType="Success" clicked={this.orderHandler}>
