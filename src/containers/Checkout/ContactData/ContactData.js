@@ -14,7 +14,7 @@ class ContactData extends Component {
           type: "text",
           placeholder: "Your name",
         },
-        value: "Anton1",
+        value: "Anton",
       },
       street: {
         elementType: "input",
