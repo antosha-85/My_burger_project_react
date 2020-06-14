@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./Input.module.css";
 
 const Input = (props) => {
-  console.log("Input -> props", props)
   let inputElement = null;
   let validationError = null
   if (props.invalid && props.touched) {
