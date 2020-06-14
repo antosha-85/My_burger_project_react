@@ -2,7 +2,12 @@ import React from "react";
 import classes from "./Input.module.css";
 
 const Input = (props) => {
+  console.log("Input -> props", props)
   let inputElement = null;
+  let validationError = null
+  if (props.invalid && props.touched) {
+    validationError = <p className={classes.ValidationError}>Please enter a valid {props.element}!</p>
+  }
   const inputClasses = [classes.InputElement];
   if (props.invalid && props.shouldValidate && props.touched) {
     inputClasses.push(classes.Invalid);
@@ -49,6 +54,7 @@ const Input = (props) => {
     <div className={classes.Input}>
       <label className={classes.Label}>{props.label}</label>
       {inputElement}
+      {validationError}
     </div>
   );
 };
