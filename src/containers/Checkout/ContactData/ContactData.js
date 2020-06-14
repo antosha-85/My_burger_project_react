@@ -94,6 +94,9 @@ class ContactData extends Component {
 
   checkValidity = (value, rules) => {
     let isValid = true;
+    // if(!rules) {
+    //   return true;
+    // } alternative way of checking validity for cases where we don't want to check validity like for select>options
 
     if (rules.required) {
       isValid = value.trim() !== "" && isValid;
