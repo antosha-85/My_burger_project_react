@@ -99,17 +99,22 @@ class BurgerBuilder extends Component {
 
   purchaseContinueHandler = () => {
     // alert("You continue!");
-    
-      const queryParams = [];
-      for (let i in this.state.ingredients) {
-        queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
-      }
-      queryParams.push('price=' + this.state.totalPrice)
-      const queryString = queryParams.join('&');
-      this.props.history.push({
-        pathname: '/checkout',
-        search: '?' + queryString
-      })
+    // after we utilized redux we don't need the code below and I commented it out
+
+
+      // const queryParams = [];
+      // for (let i in this.state.ingredients) {
+      //   queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
+      // }
+      // queryParams.push('price=' + this.state.totalPrice)
+      // const queryString = queryParams.join('&');
+      // this.props.history.push({
+      //   pathname: '/checkout',
+      //   search: '?' + queryString
+      // })
+
+      this.props.history.push('/checkout')
+
   };
 
   render() {
@@ -169,7 +174,7 @@ class BurgerBuilder extends Component {
 }
 const mapStateToProps = state => {
   return {
-    ings: state.ingredient,
+    ings: state.ingredients,
     price: state.totalPrice,
     purchasable: state.purchasable
   }
