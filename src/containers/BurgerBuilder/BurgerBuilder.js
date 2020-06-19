@@ -12,12 +12,12 @@ import WithErrorHandler from "../../hoc/WithErrorHandler/WithErrorHandler";
 import axios from "../../axios-orders";
 import * as actionTypes from '../../store/actions'
 
-const INGREDIENT_PRICES = {
-  salad: 0.5,
-  cheese: 0.4,
-  meat: 1.3,
-  bacon: 0.7,
-};
+// const INGREDIENT_PRICES = {
+//   salad: 0.5,
+//   cheese: 0.4,
+//   meat: 1.3,
+//   bacon: 0.7,
+// };
 class BurgerBuilder extends Component {
   // constructor(props) {
   //   super(props);
@@ -25,8 +25,8 @@ class BurgerBuilder extends Component {
   // }
 
   state = {
-    // ingredients: null,
-    totalPrice: 4,
+    ingredients: null,
+    // totalPrice: 4,
     purchasable: false,
     purchasing: false,
     loading: false,
@@ -34,7 +34,7 @@ class BurgerBuilder extends Component {
   };
 
   componentDidMount() {
-    // console.log('[BurgerBuilder.js] componendDidMount props', this.props)
+    console.log('[BurgerBuilder.js] componendDidMount props', this.props)
     // axios
     //   .get("https://burger-react-c67a8.firebaseio.com/ingredients.json")
     //   .then((response) => {
@@ -132,7 +132,7 @@ class BurgerBuilder extends Component {
             ingredientAdded={this.props.onIngredientAdded}
             ingredientRemoved={this.props.onIngredientRemoved}
             disabled={disabledInfo}
-            price={this.state.totalPrice}
+            price={this.props.price}
             purchasable={this.state.purchasable}
             ordered={this.purchaseHandler}
           />
@@ -143,7 +143,7 @@ class BurgerBuilder extends Component {
           ingredients={this.props.ings}
           purchaseCanceled={this.purchaseCancelHandler}
           purchaseContinued={this.purchaseContinueHandler}
-          totalPrice={this.state.totalPrice}
+          totalPrice={this.props.price}
         />
       );
     }
@@ -165,7 +165,8 @@ class BurgerBuilder extends Component {
 }
 const mapStateToProps = state => {
   return {
-    ings: state.ingredients
+    ings: state.ingredient,
+    price: state.totalPrice
   }
 }
 const mapDispatchToProps = dispatch => {
