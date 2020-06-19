@@ -25,9 +25,9 @@ class BurgerBuilder extends Component {
   // }
 
   state = {
-    ingredients: null,
+    // ingredients: null,
     // totalPrice: 4,
-    purchasable: false,
+    // purchasable: false,
     purchasing: false,
     loading: false,
     error: false
@@ -54,7 +54,8 @@ class BurgerBuilder extends Component {
       .reduce((sum, value) => {
         return sum + value;
       }, 0);
-    this.setState({ purchasable: sum > 0 });
+      return sum > 0
+    // this.setState({ purchasable: sum > 0 });
   };
 
   // addIngredientHandler = (type) => {
@@ -133,7 +134,10 @@ class BurgerBuilder extends Component {
             ingredientRemoved={this.props.onIngredientRemoved}
             disabled={disabledInfo}
             price={this.props.price}
-            purchasable={this.state.purchasable}
+            purchasable={this.props.purchasable}
+            // purchasable={this.state.purchasable}
+            // purchasable={this.updatePurchaseState(this.props.ings)} 
+            // alternativ way using, we need to call this method right away
             ordered={this.purchaseHandler}
           />
         </Aux>
@@ -166,7 +170,8 @@ class BurgerBuilder extends Component {
 const mapStateToProps = state => {
   return {
     ings: state.ingredient,
-    price: state.totalPrice
+    price: state.totalPrice,
+    purchasable: state.purchasable
   }
 }
 const mapDispatchToProps = dispatch => {

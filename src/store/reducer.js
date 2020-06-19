@@ -8,6 +8,7 @@ const initialState = {
       meat: 0
   },
   totalPrice: 4,
+  purchasable: false
 };
 
 const INGREDIENT_PRICES = {
@@ -26,7 +27,8 @@ const reducer = (state = initialState, action) => {
               ...state.ingredient,
               [action.ingredientName]: state.ingredient[action.ingredientName] + 1
           }, 
-          totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+          totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
+          purchasable: true
       };
 
     case actionTypes.REMOVE_INGREDIENT:
