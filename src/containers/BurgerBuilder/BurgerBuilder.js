@@ -10,7 +10,7 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 import WithErrorHandler from "../../hoc/WithErrorHandler/WithErrorHandler";
 
 import axios from "../../axios-orders";
-import * as actionTypes from '../../store/actions'
+import * as actionTypes from '../../store/actions/actionTypes'
 
 // const INGREDIENT_PRICES = {
 //   salad: 0.5,
