@@ -31,7 +31,7 @@ export const purchaseBurger = (orderData) => {
         // this.setState({ loading: false });
         // this.props.history.push("/");
         console.log('getting data after axios.post', response.data)
-        dispatch(purchaseBurgerSuccess(response.data, orderData))
+        dispatch(purchaseBurgerSuccess(response.data.name, orderData))
       })
       .catch((error) => {
         // this.setState({ loading: false });
