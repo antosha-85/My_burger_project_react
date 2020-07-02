@@ -24,7 +24,7 @@ export const purchaseBurgerStart = () => {
 
 export const purchaseBurger = (orderData) => {
   return (dispatch) => {
-    dispatch(purchaseBurgerStart())
+    dispatch(purchaseBurgerStart()) 
     axios
       .post("/orders.json", orderData)
       .then((response) => {
@@ -40,3 +40,9 @@ export const purchaseBurger = (orderData) => {
       });
   };
 };
+
+export const purchaseInit = () => {
+  return {
+    type: actionTypes.PURCHASE_INIT
+  }
+}
