@@ -18,31 +18,76 @@ export const purchaseBurgerFail = (error) => {
 
 export const purchaseBurgerStart = () => {
   return {
-    type: actionTypes.PURCHASE_BURGER_START
-  }
-}
+    type: actionTypes.PURCHASE_BURGER_START,
+  };
+};
 
 export const purchaseBurger = (orderData) => {
   return (dispatch) => {
-    dispatch(purchaseBurgerStart()) 
+    dispatch(purchaseBurgerStart());
     axios
       .post("/orders.json", orderData)
       .then((response) => {
         // this.setState({ loading: false });
         // this.props.history.push("/");
-        console.log('getting data after axios.post', response.data)
-        dispatch(purchaseBurgerSuccess(response.data.name, orderData))
+        console.log("getting data after axios.post", response.data.name);
+        dispatch(purchaseBurgerSuccess(response.data.name, orderData));
       })
       .catch((error) => {
         // this.setState({ loading: false });
-        dispatch(purchaseBurgerFail(error))
-
+        dispatch(purchaseBurgerFail(error));
       });
   };
 };
 
 export const purchaseInit = () => {
   return {
-    type: actionTypes.PURCHASE_INIT
+    type: actionTypes.PURCHASE_INIT,
+  };
+};
+
+export const fetchOrdersSuccess = (orders) => {
+  return {
+    type: actionTypes.FETCH_ORDERS_SUCCESS,
+    orders
+  };
+};
+
+export const fetchOrdersFail = (error) => {
+  return {
+    type: actionTypes.FETCH_ORDERS_FAIL,
+    error,
+  };
+};
+
+export const fetchOrdersStart = () => {
+  return {
+    type: actionTypes.FETCH_ORDERS_START,
+  };
+};
+
+export const fetchOrders = () => {
+  return dispatch => {
+    dispatch(fetchOrdersStart())
+    axios
+      .get("/orders.json")
+      .then((res) => {
+        const fetchedOrders = [];
+        for (let key in res.data) {
+          fetchedOrders.push({
+            ...res.data[key],
+            id: key,
+          });
+        }
+        dispatch(fetchOrdersSuccess(fetchedOrders))
+        // this.setState({
+        //   loading: false,
+        //   orders: fetchedOrders
+        // });
+      })
+      .catch((err) => {
+        dispatch(fetchOrdersFail(err))
+        // this.setState({ loading: false });
+      });
   }
 }
