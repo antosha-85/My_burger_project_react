@@ -139,7 +139,7 @@ class ContactData extends Component {
     //   });
   };
 
-  inputChangedHadler = (e, inputIdentifier) => {
+  inputChangedHandler = (e, inputIdentifier) => {
     const updatedOrderForm = { ...this.state.orderForm };
     const updatedFormElement = { ...updatedOrderForm[inputIdentifier] };
     updatedFormElement.value = e.target.value;
@@ -176,7 +176,7 @@ class ContactData extends Component {
             invalid={!formElement.config.valid}
             shouldValidate={formElement.config.validation}
             touched={formElement.config.touched}
-            changed={(event) => this.inputChangedHadler(event, formElement.id)}
+            changed={(event) => this.inputChangedHandler(event, formElement.id)}
           />
         ))}
         <Button btnType="Success" disabled={!this.state.formIsValid}>ORDER</Button>
