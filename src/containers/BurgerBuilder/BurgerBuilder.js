@@ -91,7 +91,11 @@ class BurgerBuilder extends Component {
   // };
 
   purchaseHandler = () => {
-    this.setState({ purchasing: true });
+    if (this.props.isAuthenticated) {
+      this.setState({ purchasing: true });
+    } else {
+      this.props.history.push('/auth')
+    }
   };
 
   purchaseCancelHandler = () => {
@@ -141,6 +145,7 @@ class BurgerBuilder extends Component {
             disabled={disabledInfo}
             price={this.props.price}
             purchasable={this.props.purchasable}
+            isAuth={this.props.isAuthenticated}
             // purchasable={this.state.purchasable}
             // purchasable={this.updatePurchaseState(this.props.ings)}
             // alternativ way using, we need to call this method right away
@@ -179,6 +184,7 @@ const mapStateToProps = (state) => {
     price: state.burgerBuilder.totalPrice,
     purchasable: state.burgerBuilder.purchasable,
     error: state.burgerBuilder.error,
+    isAuthenticated: state.auth.token !== null,
   };
 };
 const mapDispatchToProps = (dispatch) => {
