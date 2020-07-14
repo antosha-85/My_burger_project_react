@@ -7,7 +7,7 @@ import classes from "./ContactData.module.css";
 import Input from "../../../components/UI/Input/Input";
 import withErrorHandler from "../../../hoc/WithErrorHandler/WithErrorHandler";
 import * as actions from "../../../store/actions";
-import { updateObject } from "../../../shared/utility";
+import { updateObject, checkValidity } from "../../../shared/utility";
 
 class ContactData extends Component {
   state = {
@@ -96,27 +96,27 @@ class ContactData extends Component {
     // loading: false, // we don't need it we are using redux
   };
 
-  checkValidity = (value, rules) => {
-    let isValid = true;
-    // if(!rules) {
-    //   return true;
-    // } alternative way of checking validity for cases where we don't want to check validity like for select>options
+  // checkValidity = (value, rules) => {
+  //   let isValid = true;
+  //   // if(!rules) {
+  //   //   return true;
+  //   // } alternative way of checking validity for cases where we don't want to check validity like for select>options
 
-    if (rules.required) {
-      isValid = value.trim() !== "" && isValid;
-    }
-    if (rules.minLength) {
-      isValid = value.length >= rules.minLength && isValid;
-    }
-    if (rules.maxLength) {
-      isValid = value.length <= rules.maxLength && isValid;
-    }
-    if (rules.isEmail) {
-      const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-      isValid = pattern.test(value) && isValid;
-    }
-    return isValid;
-  };
+  //   if (rules.required) {
+  //     isValid = value.trim() !== "" && isValid;
+  //   }
+  //   if (rules.minLength) {
+  //     isValid = value.length >= rules.minLength && isValid;
+  //   }
+  //   if (rules.maxLength) {
+  //     isValid = value.length <= rules.maxLength && isValid;
+  //   }
+  //   if (rules.isEmail) {
+  //     const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+  //     isValid = pattern.test(value) && isValid;
+  //   }
+  //   return isValid;
+  // };
   orderHandler = (e) => {
     e.preventDefault();
     // this.setState({ loading: true });
@@ -153,7 +153,7 @@ class ContactData extends Component {
       this.state.orderForm[inputIdentifier],
       {
         value: e.target.value,
-        valid: this.checkValidity(e.target.value, this.state.orderForm[inputIdentifier].validation),
+        valid: checkValidity(e.target.value, this.state.orderForm[inputIdentifier].validation),
         touched: true,
       }
     );
