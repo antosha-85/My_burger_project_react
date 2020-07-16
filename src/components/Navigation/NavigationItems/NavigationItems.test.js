@@ -19,7 +19,11 @@ describe("<NavigationItems/>", () => {
   it("should render three <NavigationItem/> elements if authnticated", () => {
     // const wrapper = shallow(<NavigationItems isAuthenticated />);
     // wrapper = shallow(<NavigationItems isAuthenticated/>) alternative of wrapper.setProps({object with key-value pairs for props})
-    wrapper.setProps({isAuthenticated: true})
+    wrapper.setProps({ isAuthenticated: true });
     expect(wrapper.find(NavigationItem)).toHaveLength(3);
+  });
+  it("should contain NavigationItem with a link to /logout and contain Logout", () => {
+    wrapper.setProps({ isAuthenticated: true });
+    expect(wrapper.contains(<NavigationItem link='/logout'>Logout</NavigationItem>)).toEqual(true);
   });
 });
