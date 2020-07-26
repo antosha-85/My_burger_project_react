@@ -2,8 +2,14 @@
 
 * Create a burger using React, Redux, React Hooks, Sagas, Animations and many more - In process
 * Make this site fully mobile - :heavy_check_mark:
+* Deploy the project - :heavy_check_mark:
 * Learn Google Firebase and use Authentication - :heavy_check_mark:
 * Implement Stripe Payment - Potential goal, will be done at the last stage
+
+## Deployment
+Click on the links to be redirected to the site 
+* https://burger-react-c67a8.web.app/ Google Firebase
+* https://cocky-varahamihira-ba21fb.netlify.app/ Netlify
 
 ## Description
 
