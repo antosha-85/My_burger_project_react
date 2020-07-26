@@ -1,3 +1,20 @@
+## Goal of the project
+
+#### Create a burger using React, Redux, React Hooks, Sagas, Animations and many more - In process
+#### Make this site fully mobile - Done
+#### Learn Google Firebase and use Authentication - Done
+#### Implement Stripe Payment - Potential goal, will be done at the last stage
+
+## Description
+
+#### A user can build a burger by clicking More or Less, at the beginning the Order button is not active
+#### A user can see the price of the build burger
+#### A user can authenticate (signin/signup)
+#### A user can see his order
+#### A user can see all his orders (left top link)
+#### A user can see fill out form and make an order
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
