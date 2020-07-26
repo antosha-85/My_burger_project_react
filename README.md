@@ -1,8 +1,8 @@
 ## Goal of the project
 
 * Create a burger using React, Redux, React Hooks, Sagas, Animations and many more - In process
-* Make this site fully mobile - Done
-* Learn Google Firebase and use Authentication - Done
+* Make this site fully mobile - :heavy_check_mark:
+* Learn Google Firebase and use Authentication - :heavy_check_mark:
 * Implement Stripe Payment - Potential goal, will be done at the last stage
 
 ## Description
