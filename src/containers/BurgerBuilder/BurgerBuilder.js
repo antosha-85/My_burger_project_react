@@ -14,22 +14,23 @@ import * as actions from "../../store/actions/index";
 
 const BurgerBuilder = (props) => {
   const [state, setPurchasing] = useState(false);
+  const { onInitIngredients } = props;
 
   useEffect(() => {
-    props.onInitIngredients();
-  }, []);
+    onInitIngredients();
+  }, [onInitIngredients]);
 
-  const updatePurchaseState = (ingredients) => {
-    const sum = Object.keys(ingredients)
-      .map((key) => {
-        return ingredients[key];
-      })
-      .reduce((sum, value) => {
-        return sum + value;
-      }, 0);
-    return sum > 0;
-    // setState({ purchasable: sum > 0 });
-  };
+  // const updatePurchaseState = (ingredients) => {
+  //   const sum = Object.keys(ingredients)
+  //     .map((key) => {
+  //       return ingredients[key];
+  //     })
+  //     .reduce((sum, value) => {
+  //       return sum + value;
+  //     }, 0);
+  //   return sum > 0;
+  //   // setState({ purchasable: sum > 0 });
+  // };
 
   const purchaseHandler = () => {
     if (props.isAuthenticated) {
